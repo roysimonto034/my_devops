@@ -1,0 +1,32 @@
+import threading
+import time
+
+
+start=time.perf_counter()
+
+def mytask():
+    print("Started task")
+    time.sleep(1)
+    print("Done sleeping")
+end = time.perf_counter()
+thrd=[]
+for i in range(1,5):
+    t=threading.Thread(target=mytask)
+    t.start()
+    thrd.append(t)
+for thread in thrd:
+    thread.join()
+
+print(f'finishead execution in {end-start} seconds')
+
+
+a =[{'id':1,'name':'a','marks':2},{'id':2,'name':'b','marks':20},{'id':3,'name':'c','marks':12}]
+>>> def max_inp():
+...     mx=a[0]['marks']
+...     for i in a:
+...         if i['marks']>mx:
+...            mx=i['marks']
+...     for i in a:
+...         if mx in i.values():
+...            print(i['name'] ,i['marks'])
+...
